@@ -21,33 +21,33 @@ module heichips25_template (
     input wire dn_rx_i,
     output wire dn_tx_o
 );
-   wire unused;
+    // List all unused inputs to prevent warnings
    
     // Instantiate the usb_cdc module
-  usb_cdc #(.VENDORID(16'h1209),
-             .PRODUCTID(16'h5BF0),
-             .IN_BULK_MAXPACKETSIZE('d8),
-             .OUT_BULK_MAXPACKETSIZE('d8),
-             .BIT_SAMPLES('d4),
-             .USE_APP_CLK(0),
-             .APP_CLK_FREQ(48))  // 12MHz
-   u_usb_cdc (.frame_o(),
-              .configured_o(),
-              .app_clk_i(clk),
-              .clk_i(clk),
-              .rstn_i(rst_n),
-              .out_ready_i(uio_out[2]),
-              .in_data_i(ui_in),
-              .in_valid_i(uio_in[0]),
-              .out_data_o(uo_out),
-              .out_valid_o(uio_out[0]),
-              .in_ready_o(uio_out[1]),
-              .dp_pu_o(uio_out[2]),
-              .tx_en_o(tx_en_o),
-              .dp_rx_i(dp_rx_i),
-              .dp_tx_o(dp_tx_o),
-              .dn_rx_i(dn_rx_i),
-              .dn_tx_o(dn_tx_o));
+    usb_cdc #(.VENDORID(16'h1209),
+        .PRODUCTID(16'h5BF0),
+        .IN_BULK_MAXPACKETSIZE('d8),
+        .OUT_BULK_MAXPACKETSIZE('d8),
+        .BIT_SAMPLES('d4),
+        .USE_APP_CLK(0),
+        .APP_CLK_FREQ(48))  // 12MHz
+    u_usb_cdc (.frame_o(uio_out [{uio_out[6:4],uio_oe[7:0]}]),
+        .configured_o(uio_out [3]),
+        .app_clk_i(clk),
+        .clk_i(clk),
+        .rstn_i(rst_n),
+        .out_ready_i(uio_out[2]),
+        .in_data_i(ui_in),
+        .in_valid_i(uio_in[0]),
+        .out_data_o(uo_out),
+        .out_valid_o(uio_out[0]),
+        .in_ready_o(uio_out[1]),
+        .dp_pu_o(uio_out[2]),
+        .tx_en_o(tx_en_o),
+        .dp_rx_i(dp_rx_i),
+        .dp_tx_o(dp_tx_o),
+        .dn_rx_i(dn_rx_i),
+        .dn_tx_o(dn_tx_o));
 
 
 
