@@ -13,7 +13,13 @@ module heichips25_template (
     output wire [7:0] uio_oe,   // IOs: Enable path (active high: 0=input, 1=output)
     input  wire       ena,      // always 1 when the design is powered, so you can ignore it
     input  wire       clk,      // clock
-    input  wire       rst_n     // reset_n - low to reset
+    input  wire       rst_n,     // reset_n - low to reset
+    // usb pins for putting into pads directly
+    output wire tx_en_o,  
+    input wire dp_rx_i,
+    output wire dp_tx_o,
+    input wire dn_rx_i,
+    output wire dn_tx_o
 );
    
    
@@ -45,14 +51,14 @@ module heichips25_template (
 	    .configured_o(uio_out[4]),     // Output, 1 bit
 	    
 	    // usb signals
-	    .dp_pu_o(uio_out[7]),               // Output, 1 bit
+	    .dp_pu_o(uio_out[7]),            // Output, 1 bit
 	    .tx_en_o(tx_en_o),               // Output, 1 bit
 	    
-            .dp_tx_o(dp_tx_o),               // Output, 1 bit
-	    .dn_tx_o(dn_tx_o)                // Output, 1 bit
-
 	    .dp_rx_i(dp_rx_i),               // Input, 1 bit
+            .dp_tx_o(dp_tx_o),               // Output, 1 bit
+            
 	    .dn_rx_i(dn_rx_i),               // Input, 1 bit
+	    .dn_tx_o(dn_tx_o)                // Output, 1 bit
 	  );
 
  
