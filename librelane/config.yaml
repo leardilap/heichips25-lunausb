@@ -10,8 +10,7 @@ VERILOG_FILES:
 - dir::../src/usb_cdc/usb_cdc/ctrl_endp.v
 - dir::../src/usb_cdc/usb_cdc/in_fifo.v
 - dir::../src/usb_cdc/usb_cdc/out_fifo.v
-- dir::../src/usb_cdc/usb_cdc/bluk_endp.v
-- dir::../src/usb_cdc/usb_cdc/usb.v
+- dir::../src/usb_cdc/usb_cdc/bulk_endp.v
 
 CLOCK_PORT: clk
 CLOCK_PERIOD: 21.83 # 10ns = 100MHz
