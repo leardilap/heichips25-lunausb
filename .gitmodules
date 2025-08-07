@@ -1,0 +1,6 @@
+[submodule "src/luna-usb-serial-acm"]
+	path = src/luna-usb-serial-acm
+	url = git@github.com:gregdavill/luna-usb-serial-acm.git
+[submodule "src/usb_cdc"]
+	path = src/usb_cdc
+	url = git@github.com:ulixxe/usb_cdc.git

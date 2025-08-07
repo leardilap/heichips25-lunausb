@@ -18,8 +18,10 @@ module heichips25_template (
 
     // List all unused inputs to prevent warnings
     wire _unused = &{ena, ui_in[7:1], uio_in[7:0]};
-
+    wire unused;
+    
     logic [7:0] count;
+    logic [7:0] count2;
 
     always_ff @(posedge clk) begin
         if (!rst_n) begin
@@ -30,9 +32,51 @@ module heichips25_template (
             end
         end
     end
+
+    // Instantiate the usb_cdc module
+	  usb_cdc #(
+	    .VENDORID(16'h1234), // Example Vendor ID (16 bits)
+	    .PRODUCTID(16'h5678), // Example Product ID (16 bits)
+	    .CHANNELS(2),         // Example number of channels
+	    .IN_BULK_MAXPACKETSIZE(8), // Example max packet size for IN bulk endpoint (8 bits)
+	    .OUT_BULK_MAXPACKETSIZE(8), // Example max packet size for OUT bulk endpoint (8 bits)
+	    .BIT_SAMPLES(4),      // Example bit samples (4x of 12MHz)
+	    .USE_APP_CLK(0),      // Disable app_clk (1 bit)
+	    .APP_CLK_FREQ(12)     // Set app_clk frequency to 12 MHz (12 bits)
+	  ) usb_cdc_inst (
+	    // Inputs
+	    .clk_i(clk),                   // Input, 1 bit
+	    .rstn_i(rst_n),                 // Input, 1 bit
+	    .app_clk_i(),           // Input, 1 bit
+	    .in_data_i(ui_in),           // Input, 8*CHANNELS bits
+	    .in_valid_i(uio_in[0]),         // Input, CHANNELS bits
+	    .out_ready_i(uio_in[1]),       // Input, CHANNELS bits
+	    
+	    
+	    // Outputs
+	    .out_data_o(uo_out),         // Output, 8*CHANNELS bits
+	    .out_valid_o(uio_out[2]),       // Output, CHANNELS bits
+	    .in_ready_o(uio_out[3]),         // Output, CHANNELS bits
+	    .frame_o({unused, uio_out[6:5], uio_oe[7:0]}),               // Output, 11 bits
+	    .configured_o(uio_out[4]),     // Output, 1 bit
+	    
+	    // usb signals
+	    .dp_pu_o(uio_out[7]),               // Output, 1 bit
+	    .tx_en_o(tx_en_o),               // Output, 1 bit
+	    
+            .dp_tx_o(dp_tx_o),               // Output, 1 bit
+	    .dn_tx_o(dn_tx_o)                // Output, 1 bit
+
+	    .dp_rx_i(dp_rx_i),               // Input, 1 bit
+	    .dn_rx_i(dn_rx_i),               // Input, 1 bit
+	  );
+
     
     assign uo_out  = count;
-    assign uio_out = count;
+    assign uio_out = count2;
     assign uio_oe  = '1;
+
+
+
 
 endmodule
