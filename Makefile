@@ -62,7 +62,7 @@ ice40hx8k.bit: ice40hx8k.asc
 
 ## iCEBreaker
 
-ICEBREAKER_SOURCES = $(wildcard fpga/icebreaker/*.sv) $(wildcard src/*.sv)
+ICEBREAKER_SOURCES = $(wildcard fpga/icebreaker/*.sv) $(wildcard src/*.sv) $(wildcard src/usb_cdc/usb_cdc/*.v)
 
 synth-icebreaker: icebreaker.json
 
