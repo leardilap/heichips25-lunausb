@@ -3,15 +3,15 @@
 DESIGN_NAME: heichips25_template
 VERILOG_FILES: 
 - dir::../src/heichips25_template.sv
+- dir::../src/usb_cdc/usb_cdc/usb_cdc.v
 - dir::../src/usb_cdc/usb_cdc/phy_rx.v
 - dir::../src/usb_cdc/usb_cdc/phy_tx.v
 - dir::../src/usb_cdc/usb_cdc/sie.v
-- dir::../src/usb_cdc/usb_cdc/usb.v
-- dir::../src/usb_cdc/usb_cdc/bluk_endp.v
 - dir::../src/usb_cdc/usb_cdc/ctrl_endp.v
 - dir::../src/usb_cdc/usb_cdc/in_fifo.v
 - dir::../src/usb_cdc/usb_cdc/out_fifo.v
-- dir::../src/usb_cdc/usb_cdc/usb_cdc.v
+- dir::../src/usb_cdc/usb_cdc/bluk_endp.v
+- dir::../src/usb_cdc/usb_cdc/usb.v
 
 CLOCK_PORT: clk
 CLOCK_PERIOD: 21.83 # 10ns = 100MHz

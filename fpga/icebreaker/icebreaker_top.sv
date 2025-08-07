@@ -71,6 +71,11 @@ module icebreaker_top (
     logic [7:0] uo_out;
     logic [7:0] uio_out;
     logic [7:0] uio_oe;
+    logic tx_en_o;
+    logic dp_rx_i;
+    logic dp_tx_o;
+    logic dn_rx_i;
+    logic dn_tx_o;
     
     heichips25_template heichips25_template (
         .ui_in  (ui_in),    // Dedicated inputs
@@ -80,8 +85,14 @@ module icebreaker_top (
         .uio_oe (uio_oe),   // IOs: Enable path (active high: 0=input, 1=output)
         .ena    (ena),      // enable - goes high when design is selected
         .clk    (clk),      // clock
-        .rst_n  (rst_n)     // not reset
+        .rst_n  (rst_n),     // not reset
+      .tx_en_o(tx_en_o),
+      .dp_rx_i(dp_rx_i),
+      .dp_tx_o(dp_tx_o),
+      .dn_rx_i(dn_rx_i),
+      .dn_tx_o(dn_tx_o)
     );
+    
     
     // Assignments
     
@@ -102,5 +113,10 @@ module icebreaker_top (
 
     assign uio_in = '0;
     assign ui_in = '0;
+    
+    // usb related
+    
+    assign dp_rx_i = '0;
+    assign dn_rx_i = '0;
 		
 endmodule
