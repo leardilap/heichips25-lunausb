@@ -3,17 +3,17 @@
 DESIGN_NAME: heichips25_template
 VERILOG_FILES: 
 - dir::../src/heichips25_template.sv
-- dir::../src/usb_cdc/usb_cdc/bluk_endp.v
-- dir::../src/usb_cdc/usb_cdc/ctrl_endp.v
-- dir::../src/usb_cdc/usb_cdc/in_fifo.v
-- dir::../src/usb_cdc/usb_cdc/out_fifo.v
-- dir::../src/usb_cdc/usb_cdc/phy_rx.v
-- dir::../src/usb_cdc/usb_cdc/phy_tx.v
-- dir::../src/usb_cdc/usb_cdc/sie.v
-- dir::../src/usb_cdc/usb_cdc/usb_cdc.v
+#- dir::../src/usb_cdc/usb_cdcphy_rx.v
+#- dir::../src/usb_cdc/usb_cdcphy_tx.v
+#- dir::../src/usb_cdc/usb_cdcsie.v
+#- dir::../src/usb_cdc/usb_cdcusb.v
+#- dir::../src/usb_cdc/usb_cdcbluk_endp.v
+#- dir::../src/usb_cdc/usb_cdcctrl_endp.v
+#- dir::../src/usb_cdc/usb_cdcin_fifo.v
+#- dir::../src/usb_cdc/usb_cdcout_fifo.v
 
 CLOCK_PORT: clk
-CLOCK_PERIOD: 21.83ns # 10ns = 100MHz
+CLOCK_PERIOD: 21.83 # 10ns = 100MHz
 
 # Reduce wasted space
 TOP_MARGIN_MULT: 1

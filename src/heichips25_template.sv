@@ -15,24 +15,8 @@ module heichips25_template (
     input  wire       clk,      // clock
     input  wire       rst_n     // reset_n - low to reset
 );
-
-    // List all unused inputs to prevent warnings
-    wire _unused = &{ena, ui_in[7:1], uio_in[7:0]};
-    wire unused;
-    
-    logic [7:0] count;
-    logic [7:0] count2;
-
-    always_ff @(posedge clk) begin
-        if (!rst_n) begin
-            count <= '0;
-        end else begin
-            if (ui_in[0]) begin
-                count <= count + 1;
-            end
-        end
-    end
-
+   
+   
     // Instantiate the usb_cdc module
 	  usb_cdc #(
 	    .VENDORID(16'h1234), // Example Vendor ID (16 bits)
@@ -71,10 +55,7 @@ module heichips25_template (
 	    .dn_rx_i(dn_rx_i),               // Input, 1 bit
 	  );
 
-    
-    assign uo_out  = count;
-    assign uio_out = count2;
-    assign uio_oe  = '1;
+ 
 
 
 
