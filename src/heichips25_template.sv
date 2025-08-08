@@ -14,15 +14,22 @@ module heichips25_template (
     input  wire       ena,      // always 1 when the design is powered, so you can ignore it
     input  wire       clk,      // clock
     input  wire       rst_n,     // reset_n - low to reset
-    // usb pins for putting into pads directly
-    output wire tx_en_o,  
-    input wire dp_rx_i,
-    output wire dp_tx_o,
-    input wire dn_rx_i,
-    output wire dn_tx_o
+    // Dedicated pins for USB 
+    output wire usb_dp_en_o,
+    input  wire usb_dp_rx_i,
+    output wire usb_dp_tx_o,
+
+    output wire usb_dn_en_o,
+    input  wire usb_dn_rx_i,
+    output wire usb_dn_tx_o
 );
     // List all unused inputs to prevent warnings
     assign uio_out[7] = '0;
+    
+    // output enable of custom pins 
+    wire tx_en_o;
+    assign usb_dp_en_o = tx_en_o;
+    assign usb_dn_en_o = tx_en_o;
     
     // Instantiate the usb_cdc module from ulixxe as a Fomu device
     usb_cdc #(.VENDORID(16'h1209),
@@ -45,10 +52,10 @@ module heichips25_template (
         .in_ready_o(uio_out[1]),
         .dp_pu_o(uio_out[2]),
         .tx_en_o(tx_en_o),
-        .dp_rx_i(dp_rx_i),
-        .dp_tx_o(dp_tx_o),
-        .dn_rx_i(dn_rx_i),
-        .dn_tx_o(dn_tx_o));
+        .dp_rx_i(usb_dp_rx_i),
+        .dp_tx_o(usb_dp_tx_o),
+        .dn_rx_i(usb_dn_rx_i),
+        .dn_tx_o(usb_dn_tx_o));
 
 
 

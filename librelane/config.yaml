@@ -26,7 +26,7 @@ FP_SIZING: absolute
 
 # Small DEF template
 DIE_AREA: [0, 0, 500, 200]
-#FP_DEF_TEMPLATE: dir::def/heichips25_template_small.def
+FP_DEF_TEMPLATE: dir::def/heichips25_template_small_usb.def
 
 # Large DEF template
 #DIE_AREA: [0, 0, 500, 415]
@@ -38,7 +38,7 @@ RT_MAX_LAYER: TopMetal1
 
 # reserve space for the logo
 PL_SOFT_OBSTRUCTIONS: 
-- [20, 145, 70, 190]
+- [403, 135, 468, 190]
 
 # Enable for better SystemVerilog support
 #USE_SLANG: true
