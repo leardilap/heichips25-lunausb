@@ -1,8 +1,8 @@
 # LibreLane configuration file
 
-DESIGN_NAME: heichips25_template
+DESIGN_NAME: heichips25_usb_cdc
 VERILOG_FILES: 
-- dir::../src/heichips25_template.sv
+- dir::../src/heichips25_usb_cdc.sv
 - dir::../src/usb_cdc/usb_cdc/usb_cdc.v
 - dir::../src/usb_cdc/usb_cdc/phy_rx.v
 - dir::../src/usb_cdc/usb_cdc/phy_tx.v
