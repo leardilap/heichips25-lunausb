@@ -22,6 +22,7 @@ module heichips25_template (
     output wire dn_tx_o
 );
     // List all unused inputs to prevent warnings
+    assign uio_out[7] = '0;
     
     // Instantiate the usb_cdc module from ulixxe as a Fomu device
     usb_cdc #(.VENDORID(16'h1209),
@@ -31,12 +32,12 @@ module heichips25_template (
         .BIT_SAMPLES('d4),
         .USE_APP_CLK(0),
         .APP_CLK_FREQ(48))  // 48MHz
-    u_usb_cdc (.frame_o({uio_out[7:5],uio_oe[7:0]}),
-        .configured_o(uio_out [4]),
+    u_usb_cdc (.frame_o({uio_out[6:4],uio_oe[7:0]}),
+        .configured_o(uio_out [3]),
         .app_clk_i(clk),
         .clk_i(clk),
         .rstn_i(rst_n),
-        .out_ready_i(uio_out[3]),
+        .out_ready_i(uio_in[2]),
         .in_data_i(ui_in),
         .in_valid_i(uio_in[0]),
         .out_data_o(uo_out),
