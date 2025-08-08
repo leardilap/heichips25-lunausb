@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: © 2025 XXX Authors
+// SPDX-FileCopyrightText: © 2025 Luis Ardila, Brian Pachideh, Francisco Sayas
 // SPDX-License-Identifier: Apache-2.0
 
 // Adapted from the Tiny Tapeout template
@@ -24,14 +24,14 @@ module heichips25_template (
     // List all unused inputs to prevent warnings
     assign uio_out[7] = '0;
     
-    // Instantiate the usb_cdc module
+    // Instantiate the usb_cdc module from ulixxe as a Fomu device
     usb_cdc #(.VENDORID(16'h1209),
         .PRODUCTID(16'h5BF0),
         .IN_BULK_MAXPACKETSIZE('d8),
         .OUT_BULK_MAXPACKETSIZE('d8),
         .BIT_SAMPLES('d4),
         .USE_APP_CLK(0),
-        .APP_CLK_FREQ(48))  // 12MHz
+        .APP_CLK_FREQ(48))  // 48MHz
     u_usb_cdc (.frame_o({uio_out[6:4],uio_oe[7:0]}),
         .configured_o(uio_out [3]),
         .app_clk_i(clk),
