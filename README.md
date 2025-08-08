@@ -1,7 +1,7 @@
 # HeiChips USB_CDC Documentation
-[presentation]{https://docs.google.com/presentation/d/e/2PACX-1vSBIOuQU2Qmxtozbbiq4HIFf2tZyCna9hQs5pjRWHTNzGNpqGkNCC14YpDXrjLKYuJmp5OvV89Ups6q/pub?start=false&loop=false&delayms=3000}
+[presentation](https://docs.google.com/presentation/d/e/2PACX-1vSBIOuQU2Qmxtozbbiq4HIFf2tZyCna9hQs5pjRWHTNzGNpqGkNCC14YpDXrjLKYuJmp5OvV89Ups6q/pub?start=false&loop=false&delayms=3000)
 
-![Logo](src/logo/logo_usb_cdc.png)
+![Logo](src/logo/logo_usb_cdc.jpg)
 
 # HeiChips 2025 Hackathon Template
 
