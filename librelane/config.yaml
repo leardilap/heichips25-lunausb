@@ -13,7 +13,7 @@ VERILOG_FILES:
 - dir::../src/usb_cdc/usb_cdc/bulk_endp.v
 
 CLOCK_PORT: clk
-CLOCK_PERIOD: 21.83 # 10ns = 100MHz
+CLOCK_PERIOD: 20.83 # 20.83ns = 48MHz
 
 # Reduce wasted space
 TOP_MARGIN_MULT: 1
@@ -37,8 +37,10 @@ PDN_MULTILAYER: false
 RT_MAX_LAYER: TopMetal1
 
 # reserve space for the logo
-PL_SOFT_OBSTRUCTIONS: 
-- [403, 135, 468, 190]
+#PL_SOFT_OBSTRUCTIONS: 
+#- [403, 135, 468, 190]
+PDN_OBSTRUCTIONS:
+ - [TopMetal1, 335, 41, 461, 168]
 
 # Enable for better SystemVerilog support
 #USE_SLANG: true
