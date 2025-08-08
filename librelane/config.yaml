@@ -36,5 +36,11 @@ DIE_AREA: [0, 0, 500, 200]
 PDN_MULTILAYER: false
 RT_MAX_LAYER: TopMetal1
 
+# reserve space for the logo
+PL_SOFT_OBSTRUCTIONS: 
+- [20, 145, 70, 190]
+
 # Enable for better SystemVerilog support
 #USE_SLANG: true
+
+
