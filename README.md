@@ -1,3 +1,8 @@
+# HeiChips USB_CDC Documentation
+[presentation]{https://docs.google.com/presentation/d/e/2PACX-1vSBIOuQU2Qmxtozbbiq4HIFf2tZyCna9hQs5pjRWHTNzGNpqGkNCC14YpDXrjLKYuJmp5OvV89Ups6q/pub?start=false&loop=false&delayms=3000}
+
+![Logo](src/logo/logo_usb_cdc.png)
+
 # HeiChips 2025 Hackathon Template
 
 This repository is the submission template for the HeiChips 2025 Hackathon.
@@ -156,13 +161,13 @@ The issue should contain the following information:
 
 Checklist:
 
-- [ ] The project top-level has a unique name starting with `heichips25_`.
-- [ ] The design is verified and tested.
-- [ ] The macro is stored under `macro/`.
-- [ ] `TopMetal2` in the macro is empty (for integration).
-- [ ] The macro is DRC clean (minimal DRC set without fill checks).
-- [ ] The macro uses the default power pins (VPWR, VGND).
-- [ ] The project is licensed under Apache 2.0.
+- [*] The project top-level has a unique name starting with `heichips25_`.
+- [*] The design is verified and tested.
+- [*] The macro is stored under `macro/`.
+- [*] `TopMetal2` in the macro is empty (for integration).
+- [*] The macro is DRC clean (minimal DRC set without fill checks).
+- [*] The macro uses the default power pins (VPWR, VGND).
+- [*] The project is licensed under Apache 2.0.
 
 ## License
 
