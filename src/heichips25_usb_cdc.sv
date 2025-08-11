@@ -21,12 +21,14 @@ module heichips25_usb_cdc (
 
     output wire usb_dn_en_o,
     input  wire usb_dn_rx_i,
-    output wire usb_dn_tx_o
-);
-    // List all unused inputs to prevent warnings
-    assign uio_out[7] = '0;
+    output wire usb_dn_tx_o,
     
-    // output enable of custom pins 
+    output wire usb_dp_up_o
+);
+    // List all unused outputs to prevent warnings
+    assign uio_out[7:3] = '0;
+    
+    // output enable of custom pins driven from single tx_en_o signal
     wire tx_en_o;
     assign usb_dp_en_o = tx_en_o;
     assign usb_dn_en_o = tx_en_o;
@@ -39,23 +41,25 @@ module heichips25_usb_cdc (
         .BIT_SAMPLES('d4),
         .USE_APP_CLK(0),
         .APP_CLK_FREQ(48))  // 48MHz
-    u_usb_cdc (.frame_o({uio_out[6:4],uio_oe[7:0]}),
-        .configured_o(uio_out [3]),
+    u_usb_cdc (
+        .frame_o(),
+        .configured_o(uio_out[2]),
         .app_clk_i(clk),
         .clk_i(clk),
         .rstn_i(rst_n),
-        .out_ready_i(uio_in[2]),
+        .out_ready_i(uio_in[1]),
         .in_data_i(ui_in),
         .in_valid_i(uio_in[0]),
         .out_data_o(uo_out),
         .out_valid_o(uio_out[0]),
         .in_ready_o(uio_out[1]),
-        .dp_pu_o(uio_out[2]),
+        .dp_pu_o(usb_dp_up_o),
         .tx_en_o(tx_en_o),
         .dp_rx_i(usb_dp_rx_i),
         .dp_tx_o(usb_dp_tx_o),
         .dn_rx_i(usb_dn_rx_i),
-        .dn_tx_o(usb_dn_tx_o));
+        .dn_tx_o(usb_dn_tx_o)
+        );
 
 
 

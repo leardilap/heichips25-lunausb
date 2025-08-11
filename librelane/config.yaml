@@ -39,8 +39,8 @@ RT_MAX_LAYER: TopMetal1
 # reserve space for the logo
 #PL_SOFT_OBSTRUCTIONS: 
 #- [403, 135, 468, 190]
-PDN_OBSTRUCTIONS:
- - [TopMetal1, 335, 41, 461, 168]
+#PDN_OBSTRUCTIONS:
+# - [TopMetal1, 335, 41, 461, 168]
 
 # Enable for better SystemVerilog support
 #USE_SLANG: true
