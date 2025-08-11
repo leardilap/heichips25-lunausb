@@ -26,7 +26,9 @@ module heichips25_usb_cdc (
     output wire usb_dp_up_o
 );
     // List all unused outputs to prevent warnings
-    assign uio_out[7:3] = '0;
+    assign uio_out[7] = '0;
+    assign uio_out[3:0] = '0;
+    assign uio_oe[7:0] = 8'hF0;
     
     // output enable of custom pins driven from single tx_en_o signal
     wire tx_en_o;
@@ -43,7 +45,7 @@ module heichips25_usb_cdc (
         .APP_CLK_FREQ(48))  // 48MHz
     u_usb_cdc (
         .frame_o(),
-        .configured_o(uio_out[2]),
+        .configured_o(uio_out[6]),
         .app_clk_i(clk),
         .clk_i(clk),
         .rstn_i(rst_n),
@@ -51,8 +53,8 @@ module heichips25_usb_cdc (
         .in_data_i(ui_in),
         .in_valid_i(uio_in[0]),
         .out_data_o(uo_out),
-        .out_valid_o(uio_out[0]),
-        .in_ready_o(uio_out[1]),
+        .out_valid_o(uio_out[4]),
+        .in_ready_o(uio_out[5]),
         .dp_pu_o(usb_dp_up_o),
         .tx_en_o(tx_en_o),
         .dp_rx_i(usb_dp_rx_i),
