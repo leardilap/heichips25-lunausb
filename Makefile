@@ -4,7 +4,7 @@ PDK_ROOT ?= ~/.ciel
 PDK ?= ihp-sg13g2
 
 RUN_TAG = $(shell ls librelane/runs/ -1 | tail -n 1)
-
+TOP = heichips25_usb_cdc
 # Macro - LibreLane
 
 macro:
@@ -20,6 +20,8 @@ macro-klayout:
 .PHONY: macro-klayout
 
 copy-macro:
+	cp librelane/runs/${RUN_TAG}/final/gds/${TOP}.gds librelane/runs/${RUN_TAG}/final/gds/${TOP}.gds.bkp
+	python3 scripts/insert_logo.py librelane/runs/${RUN_TAG}/final/gds/${TOP}.gds src/logo/gds/logo_usb_cdc.gds librelane/runs/${RUN_TAG}/final/gds/${TOP}.gds
 	mkdir -p macro/
 	rm -rf macro/*
 	cp -r librelane/runs/${RUN_TAG}/final/* macro/

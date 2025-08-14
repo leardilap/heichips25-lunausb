@@ -17,6 +17,7 @@ module heichips25_usb_cdc(
   output usb_dp_tx_o,
   output usb_dn_en_o,
   input usb_dn_rx_i,
-  output usb_dn_tx_o
+  output usb_dn_tx_o,
+  output usb_dp_up_o
 );
 endmodule

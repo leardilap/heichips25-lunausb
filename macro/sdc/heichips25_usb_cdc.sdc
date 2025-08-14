@@ -57,6 +57,7 @@ set_output_delay 4.1660 -clock [get_clocks {clk}] -add_delay [get_ports {usb_dn_
 set_output_delay 4.1660 -clock [get_clocks {clk}] -add_delay [get_ports {usb_dn_tx_o}]
 set_output_delay 4.1660 -clock [get_clocks {clk}] -add_delay [get_ports {usb_dp_en_o}]
 set_output_delay 4.1660 -clock [get_clocks {clk}] -add_delay [get_ports {usb_dp_tx_o}]
+set_output_delay 4.1660 -clock [get_clocks {clk}] -add_delay [get_ports {usb_dp_up_o}]
 ###############################################################################
 # Environment
 ###############################################################################
@@ -64,6 +65,7 @@ set_load -pin_load 0.0060 [get_ports {usb_dn_en_o}]
 set_load -pin_load 0.0060 [get_ports {usb_dn_tx_o}]
 set_load -pin_load 0.0060 [get_ports {usb_dp_en_o}]
 set_load -pin_load 0.0060 [get_ports {usb_dp_tx_o}]
+set_load -pin_load 0.0060 [get_ports {usb_dp_up_o}]
 set_load -pin_load 0.0060 [get_ports {uio_oe[7]}]
 set_load -pin_load 0.0060 [get_ports {uio_oe[6]}]
 set_load -pin_load 0.0060 [get_ports {uio_oe[5]}]
