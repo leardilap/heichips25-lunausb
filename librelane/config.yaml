@@ -28,9 +28,8 @@ FP_SIZING: absolute
 DIE_AREA: [0, 0, 500, 200]
 FP_DEF_TEMPLATE: dir::def/heichips25_template_small_usb.def
 
-# Large DEF template
-#DIE_AREA: [0, 0, 500, 415]
-#FP_DEF_TEMPLATE: dir::def/heichips25_template_large.def
+#FP_PIN_ORDER_CFG: dir::ctr/usb_cdc_pins.cfg
+
 
 # Don't use power rings or TopMetal2 layer
 PDN_MULTILAYER: false
@@ -39,8 +38,8 @@ RT_MAX_LAYER: TopMetal1
 # reserve space for the logo
 #PL_SOFT_OBSTRUCTIONS: 
 #- [403, 135, 468, 190]
-#PDN_OBSTRUCTIONS:
-# - [TopMetal1, 335, 41, 461, 168]
+PDN_OBSTRUCTIONS:
+ - [TopMetal1, 405, 0, 465, 200]
 
 # Enable for better SystemVerilog support
 #USE_SLANG: true
