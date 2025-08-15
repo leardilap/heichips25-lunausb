@@ -26,9 +26,8 @@ module heichips25_usb_cdc (
     output wire usb_dp_up_o
 );
     // List all unused outputs to prevent warnings
-    assign uio_out[7] = '0;
-    assign uio_out[3:0] = '0;
-    assign uio_oe[7:0] = 8'hF0;
+    assign uio_out[2:0] = '0;
+    assign uio_oe[7:0] = 8'hF8;
     
     // output enable of custom pins driven from single tx_en_o signal
     wire tx_en_o;
@@ -63,7 +62,12 @@ module heichips25_usb_cdc (
         .dn_tx_o(usb_dn_tx_o)
         );
 
-
+    spad_env_f_bit i_spad_env_f_bit (
+        .clk            (clk),
+        .spad_hit_async (uio_in[2]),
+        .env_bit        (uio_out[7]),
+        .env_valid      (uio_out[3])
+    );
 
 
 endmodule
