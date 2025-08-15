@@ -44,4 +44,24 @@ PDN_OBSTRUCTIONS:
 # Enable for better SystemVerilog support
 #USE_SLANG: true
 
+MACROS:
+  spad_env_f_bit:
+    gds:
+      - dir::../spad_env_f_bit/macro/gds/spad_env_f_bit.gds
+    lef:
+      - dir::../spad_env_f_bit/macro/lef/spad_env_f_bit.lef
+    nl:
+      - dir::../spad_env_f_bit/macro/nl/spad_env_f_bit.nl.v
+    spef:
+      nom:
+        - dir::../spad_env_f_bit/macro/spef/nom/spad_env_f_bit.nom.spef
+    instances:
+      i_spad_env_f_bit:
+        location: [50, 5]
+        orientation: N
 
+PDN_MACRO_CONNECTIONS:
+  - "i_spad_env_f_bit VPWR VGND VPWR VGND"
+
+# Custom PDN config
+FP_PDN_CFG: dir::pdn_cfg.tcl
