@@ -19,9 +19,18 @@ macro-klayout:
 	cd librelane; librelane config.yaml --pdk $(PDK) --last-run --flow OpenInKLayout
 .PHONY: macro-klayout
 
-copy-macro:
-	cp librelane/runs/${RUN_TAG}/final/gds/${TOP}.gds librelane/runs/${RUN_TAG}/final/gds/${TOP}.gds.bkp
+check-logo:
+	KLAYOUT_PATH=~/.ciel/ihp-sg13g2/libs.tech/klayout/ klayout -e src/logo/gds/logo_usb_cdc.gds
+
+insert-logo:
+	mkdir -p librelane/runs/${RUN_TAG}/final_gds_bkp/
+	cp librelane/runs/${RUN_TAG}/final/gds/${TOP}.gds librelane/runs/${RUN_TAG}/final_gds_bkp/${TOP}.gds
 	python3 scripts/insert_logo.py librelane/runs/${RUN_TAG}/final/gds/${TOP}.gds src/logo/gds/logo_usb_cdc.gds librelane/runs/${RUN_TAG}/final/gds/${TOP}.gds
+	
+check-final:
+	KLAYOUT_PATH=~/.ciel/ihp-sg13g2/libs.tech/klayout/ klayout -e librelane/runs/${RUN_TAG}/final/gds/${TOP}.gds
+	
+copy-macro:
 	mkdir -p macro/
 	rm -rf macro/*
 	cp -r librelane/runs/${RUN_TAG}/final/* macro/
